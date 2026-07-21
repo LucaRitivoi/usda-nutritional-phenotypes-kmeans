@@ -1,47 +1,45 @@
-# Unsupervised Machine Learning Classification of Nutritional Phenotypes
-**Evaluating Macronutrient Geometry and Marketing Bias via K-Means Clustering on USDA Food Profiles**
+# USDA Food Phenotypes: K-Means Nutritional Clustering
+**By Analyzing Objective Nutrient Geometry to Uncover Commercial Marketing Bias**
 
 ---
 
-## Executive Summary
-Commercial food labeling frequently obscures objective nutritional composition and metabolic impact through consumer-facing marketing strategies. To isolate genuine nutritional profiles, a multi-dimensional feature space was constructed from $N = 7,058$ entries in the USDA National Nutrient Database, tracking six core parameters: Calories, Total Fat, Saturated Fat, Carbohydrates, Sugars, and Sodium. 
+## 1. Project Overview & Goal
+The main goal of this project was to evaluate how food can be accurately labeled based on objective classifications by macro and micronutrients. Food corporations often label foods in ways that disguise their true composition and metabolic effect, using misleading marketing that convinces consumers they are eating something different than they truly are. 
 
-Optimization via the Elbow Method established $K=4$ as the foundational macro-phenotypic structure for a K-Means clustering algorithm utilizing Euclidean distance metrics. Unsupervised classification successfully isolated four distinct food profiles: a low-calorie baseline (predominantly raw vegetables), a lipid-dense group (oils and pure fats), a high-protein cohort, and a high-carbohydrate/high-sodium category representing ultra-processed foods. 
-
-Crucially, the model bypassed labeling nomenclature to classify items purely by chemical geometry, grouping dense protein sources indiscriminately of origin while dynamically segregating low-protein meat variants based on sub-surface macronutrient deficiency. This study demonstrates that unsupervised machine learning can effectively strip away marketing bias to expose the mathematical health geometry of commercial food supplies.
+Testing how a computer groups food leaves out any marketing confusion and looks purely at the composition of the foods to group them together.
 
 ---
 
-## 1. Introduction & Research Question
-Modern nutritional messaging relies heavily on consumer-facing descriptors such as *"low-fat," "diet,"* or *"protein-enriched."* However, these qualitative labels often fail to capture the quantitative realities of a product's metabolic impact. Because FDA labeling guidelines allow room for strategic branding, products with vastly different biological profiles can share similar health claims, while products with identical chemical structures are marketed under completely divergent categories.
+## 2. Dataset & Methods
+I sourced 7,058 USDA foods and focused on six key macro and micronutrients: 
+* **Calories**
+* **Total Fat**
+* **Saturated Fat**
+* **Carbohydrates**
+* **Sugar**
+* **Sodium**
 
-### Key Hypotheses:
-1. **Unsupervised Classification:** An unsupervised K-Means clustering algorithm, operating strictly on standardized quantitative macronutrient features, will ignore commercial naming conventions and group foods based entirely on underlying biochemical geometry.
-2. **Detection of Marketing Anomalies:** The algorithm will expose structural overlaps between commercially marketed *"diet/health"* foods and traditional ultra-processed, high-sugar/high-sodium items.
+### Data Normalization & Machine Learning
+* **StandardScaler:** I used a Z-score StandardScaler to normalize the data, ensuring that large numbers (like sodium in milligrams) didn't overpower smaller numbers (like protein in grams).
+* **Elbow Method:** I optimized the dataset using the Elbow Method to find the best number of clusters ($K$).
+* **K-Means Algorithm:** I trained a K-Means clustering algorithm with $K = 4$.
 
 ---
 
-## 2. Data Preprocessing & Mathematical Methodology
+## 3. Findings & Observations
 
-### Dataset Architecture
-The primary dataset was extracted from the **USDA National Nutrient Database** ($N = 7,058$), targeting six high-impact macronutrient and micronutrient parameters per 100g serving:
-* **Protein (g)**
-* **Total Fat (g)**
-* **Saturated Fat (g)**
-* **Carbohydrates (g)**
-* **Sugar (g)**
-* **Sodium (mg)**
+The computer grouped the dataset into 4 main profiles based purely on nutrient chemistry:
+1. **Low Protein / Low Fat / Low Carbohydrate:** Mainly raw vegetables and simple foods.
+2. **High Carbohydrate & High Sodium:** Common processed foods and sweets.
+3. **High Fat:** Pure oils, shortenings, and dense fat sources.
+4. **High Protein:** Lean/fatty meats, poultry, eggs, and dense protein sources.
 
-### Feature Engineering & Data Normalization
-To prevent features with larger raw magnitudes (such as Sodium in milligrams) from artificially dominating Euclidean distance calculations over lower-magnitude features (such as Protein in grams), feature variance was standardized using **Z-score normalization** ($StandardScaler$):
+### Key Discoveries:
+* **Protein Sources Group Together Regardless of Origin:** Higher protein food sources often clustered together no matter what they were made of. For example, dried walrus meat and plant-based vegetarian sausage rolls shared the exact same protein-dense cluster because of their chemical composition.
+* **Unmasking "Diet" Marketing:** Higher sodium and higher carbohydrate foods grouped together as processed foods. The computer clustered "diet" or "lower-fat" alternatives (like reduced-fat biscuits and Slim-A-Bear ice cream novelties) in the exact same group as standard cookies and caramel popcorn, showing that low-fat marketing doesn't change high carbohydrate/sugar reality.
+* **Real Meats vs. Variants:** The computer separates real meats that are naturally high in protein from low-protein meat variants that fail to be high in protein, revealing the distinguishing characteristics between the two.
 
-$$z = \frac{x - \mu}{\sigma}$$
+---
 
-*Where $x$ is the raw feature value, $\mu$ is the feature mean, and $\sigma$ is the standard deviation.* Missing values across nutrient features were statically imputed using column-mean substitution to maintain sample size integrity without shifting global distributions.
-
-### Optimization via the Elbow Method
-To determine the optimal number of clusters ($K$), the **Within-Cluster Sum of Squares (WCSS)** was evaluated across $K \in [1, 10]$:
-
-$$WCSS = \sum_{k=1}^{K} \sum_{x_i \in C_k} ||x_i - \mu_k||^2$$
-
-Evaluating the inflection point (or "elbow") on the WCSS curve revealed structural bends at $K=4$ and $K=6$. $K=4$ was chosen as the foundational macro-phenotypic structure to maximize inter-cluster variance while avoiding over-segmentation.
+## 4. Conclusion
+This study proves that machine learning and data analysis can objectively classify foods in a way that shows the true health profiles of all foods to the public, bypassing corporate marketing claims.

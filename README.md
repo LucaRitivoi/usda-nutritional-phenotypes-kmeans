@@ -27,7 +27,7 @@ I sourced 7,058 USDA foods and focused on six key macro and micronutrients:
 ---
 
 ## 3. Findings & Observations
-
+![Cluster Visualizations](cluster_visualizations.png)
 The computer grouped the dataset into 4 main profiles based purely on nutrient chemistry:
 1. **Low Protein / Low Fat / Low Carbohydrate:** Mainly raw vegetables and simple foods.
 2. **High Carbohydrate & High Sodium:** Common processed foods and sweets.

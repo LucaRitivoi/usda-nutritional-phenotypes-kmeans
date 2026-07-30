@@ -1,10 +1,10 @@
 # Unsupervised Nutritional Profiling of USDA Foods Using K-Means Clustering
-**Evaluating Objective Macro and Micronutrient Geometry to Identify Commercial Labeling Discrepancies**
+**Evaluating Nutrient-Based Food Classification Independent of Commercial Marketing Labels**
 
 ---
 
 ## 1. Project Overview & Objective
-Nutritional marketing often emphasizes specific claims (e.g., "low fat" or "diet") that may obscure a product's overall metabolic profile. The objective of this study is to evaluate whether an unsupervised machine learning model can objectively categorize food products based strictly on their chemical composition, independent of commercial marketing labels.
+Nutritional marketing often emphasizes specific claims (e.g., "low fat" or "diet") that may obscure a product's overall nutritional profile. The objective of this study is to evaluate whether an unsupervised machine learning model can objectively categorize food products based strictly on their quantitative nutrient composition, independent of commercial marketing labels.
 
 ---
 
@@ -29,7 +29,7 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 
 ![Cluster Visualizations](cluster_visualizations.png)
 
-The algorithm grouped the dataset into four distinct nutritional phenotypes based on feature centroids:
+The algorithm grouped the dataset into four distinct nutritional profiles based on feature centroids:
 
 1. **Cluster 0 (Low-Density / Baseline):** Minimal macro-nutrient density; primarily raw vegetables and hydration-dense items.
 2. **Cluster 1 (High Carbohydrate & High Sodium):** Heavily processed grains, snack foods, and refined sweets.
@@ -42,7 +42,15 @@ The algorithm grouped the dataset into four distinct nutritional phenotypes base
 
 ---
 
-## 4. Limitations & Future Work
+## 4. Reproducibility & Code Execution
+To reproduce these findings locally:
+1. Clone this repository: `git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git`
+2. Install required packages: `pip install pandas numpy scikit-learn matplotlib seaborn`
+3. Launch Jupyter Notebook and execute `USDA_Clustering_Analysis.ipynb` from top to bottom.
+
+---
+
+## 5. Limitations & Future Work
 
 ### Limitations
 * **Geometric Assumptions:** $K$-Means assumes isotropic (spherical) cluster geometry, which may not capture complex non-linear boundaries in nutritional data.
@@ -54,5 +62,12 @@ The algorithm grouped the dataset into four distinct nutritional phenotypes base
 
 ---
 
-## 5. Conclusion
-These results demonstrate that unsupervised clustering can effectively group foods by objective chemical composition, providing a transparent, data-driven framework for evaluating food profiles alongside commercial claims.
+## 6. Conclusion
+These results demonstrate that unsupervised clustering can effectively group foods according to nutrient composition. This approach provides a transparent, data-driven framework for comparing nutrient-based classifications with the ways foods are marketed to consumers.
+
+---
+
+## 7. References
+* **U.S. Department of Agriculture, Agricultural Research Service.** FoodData Central, 2019. [fdc.nal.usda.gov](https://fdc.nal.usda.gov/).
+* **Pedregosa et al.** *Scikit-learn: Machine Learning in Python*. JMLR 12, pp. 2825-2830, 2011.
+* **MacQueen, J.** *Some methods for classification and analysis of multivariate observations.* Proceedings of the fifth Berkeley symposium on mathematical statistics and probability, 1967.

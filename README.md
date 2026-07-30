@@ -4,7 +4,7 @@
 ---
 
 ## Abstract
-This project applies unsupervised machine learning to 7,058 USDA food items to identify nutrient-based groupings independent of commercial labeling. Using standardized nutritional features, Principal Component Analysis (PCA), and K-Means clustering, the analysis explores how foods naturally organize according to their underlying nutrient profiles.
+This project applies unsupervised machine learning to 7,058 USDA food items to identify nutrient-based groupings independent of commercial labeling. By analyzing foods based solely on quantitative nutrient composition, this study explores whether computational methods can reveal patterns that are not immediately apparent from traditional food categories or commercial marketing descriptions. Using standardized nutritional features, Principal Component Analysis (PCA), and K-Means clustering, the analysis explores how foods naturally organize according to their observed nutrient profiles.
 
 ---
 
@@ -13,7 +13,18 @@ Nutritional marketing often emphasizes specific claims (e.g., "low fat" or "diet
 
 ---
 
-## 2. Dataset & Methodology
+## 2. Repository & Project Structure
+```text
+.
+├── USDA_Clustering_Analysis.ipynb   # Main Jupyter Notebook with data pipeline & visualizations
+├── cluster_visualizations.png       # Generated PCA scatter plot and centroid heatmap
+├── README.md                        # Project documentation and research report
+└── requirements.txt                 # Python environment dependencies
+```
+
+---
+
+## 3. Dataset & Methodology
 This study analyzed **7,058 food items** from the USDA National Nutrient Database across seven core quantitative nutritional features (per 100g serving):
 * **Calories (kcal)**
 * **Protein (g)**
@@ -30,7 +41,7 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 
 ---
 
-## 3. Results & Visualizations
+## 4. Results & Visualizations
 
 ![Cluster Visualizations](cluster_visualizations.png)
 
@@ -38,10 +49,10 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 
 | Cluster | Profile Description | Key Characteristics | Representative Examples |
 | :--- | :--- | :--- | :--- |
-| **Cluster 0** | **Low Nutrient Density** | Low caloric/macronutrient concentration, high water content | Raw vegetables, leafy greens, simple broth bases |
+| **Cluster 0** | **Low Energy Density** | Low caloric and macronutrient concentration, high water content | Raw vegetables, leafy greens, simple broth bases |
 | **Cluster 1** | **High Carbohydrate & Sodium** | Elevated sugars, starches, and sodium levels | Processed grains, baked goods, snacks, confectioneries |
 | **Cluster 2** | **Lipid-Dense** | Concentrated fats and high energy density | Plant oils, animal fats, shortenings, nut butters |
-| **Cluster 3** | **High Protein** | High protein concentration with variable fat profiles | Poultry, seafood, lean meats, plant protein isolates |
+| **Cluster 3** | **High Protein** | High protein content with variable fat profiles | Poultry, seafood, lean meats, plant protein isolates |
 
 ### Key Observations:
 * **Convergence Across Biological Origins:** High-protein items clustered together regardless of source origin. For instance, dried walrus meat and plant-based sausage alternatives mapped to the same high-protein cluster based strictly on nutrient composition.
@@ -49,7 +60,7 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 
 ---
 
-## 4. Reproducibility & Code Execution
+## 5. Reproducibility & Code Execution
 To reproduce these findings locally (Python 3.8+ recommended):
 
 1. Clone this repository: `git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git`
@@ -58,7 +69,7 @@ To reproduce these findings locally (Python 3.8+ recommended):
 
 ---
 
-## 5. Limitations & Future Work
+## 6. Limitations & Future Work
 
 ### Limitations
 * **Geometric Assumptions:** K-Means assumes isotropic (spherical) cluster geometry, which may not capture complex non-linear boundaries in nutritional data.
@@ -70,13 +81,13 @@ To reproduce these findings locally (Python 3.8+ recommended):
 
 ---
 
-## 6. Conclusion
-These results demonstrate that unsupervised clustering can identify meaningful groupings of foods based on nutrient composition. This approach provides a transparent, data-driven framework for comparing nutrient-based classifications with the ways foods are marketed to consumers.
+## 7. Conclusion
+These results demonstrate that unsupervised clustering can identify meaningful groupings of foods based on nutrient composition. This approach provides a transparent, data-driven framework for comparing nutrient-based classifications with commercial marketing categories.
 
 ---
 
-## 7. References
-* **U.S. Department of Agriculture, Agricultural Research Service.** FoodData Central, 2019. https://fdc.nal.usda.gov/
+## 8. References
+* **U.S. Department of Agriculture, Agricultural Research Service.** FoodData Central, 2019. [https://fdc.nal.usda.gov/](https://fdc.nal.usda.gov/)
 * **Pedregosa et al.** *Scikit-learn: Machine Learning in Python*. Journal of Machine Learning Research (JMLR), 12, pp. 2825-2830, 2011.
 * **Jolliffe, I. T.** *Principal Component Analysis*. Springer Series in Statistics, Springer-Verlag, 2002.
 * **MacQueen, J.** *Some methods for classification and analysis of multivariate observations.* Proceedings of the 5th Berkeley Symposium on Mathematical Statistics and Probability, 1967.

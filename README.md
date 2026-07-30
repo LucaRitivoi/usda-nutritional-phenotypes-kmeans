@@ -19,9 +19,9 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 * **Sodium (mg)**
 
 ### Machine Learning Pipeline
-* **Data Normalization:** Features were standardized using a $Z$-score `StandardScaler` to prevent high-magnitude features (e.g., sodium in mg) from disproportionately influencing Euclidean distance calculations.
-* **Dimensionality Reduction:** Principal Component Analysis (PCA) was applied to project the 7-dimensional feature space onto two principal axes ($PC1$ and $PC2$), retaining **59.12%** of overall feature variance.
-* **Clustering & Hyperparameter Optimization:** $K$-Means clustering was executed for $K \in [1, 10]$. Hyperparameter selection ($K = 4$) was guided by Within-Cluster Sum of Squares (WCSS) inflection and validated via Silhouette Analysis, yielding an overall **Silhouette Score of 0.4014**.
+* **Data Normalization:** Features were standardized using a Z-score `StandardScaler` to prevent high-magnitude features (e.g., sodium in mg) from disproportionately influencing Euclidean distance calculations.
+* **Dimensionality Reduction:** Principal Component Analysis (PCA) was applied to project the 7-dimensional feature space onto two principal axes (PC1 and PC2), retaining **59.12%** of overall feature variance.
+* **Clustering & Hyperparameter Optimization:** K-Means clustering was executed for K in [1, 10]. Hyperparameter selection (K = 4) was guided by Within-Cluster Sum of Squares (WCSS) inflection and validated via Silhouette Analysis, yielding an overall **Silhouette Score of 0.4014**.
 
 ---
 
@@ -29,23 +29,26 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 
 ![Cluster Visualizations](cluster_visualizations.png)
 
-The algorithm grouped the dataset into four distinct nutritional profiles based on feature centroids:
+### Cluster Profile Summary (Mean Values per 100g)
 
-1. **Cluster 0 (Low-Density / Baseline):** Minimal macro-nutrient density; primarily raw vegetables and hydration-dense items.
-2. **Cluster 1 (High Carbohydrate & High Sodium):** Heavily processed grains, snack foods, and refined sweets.
-3. **Cluster 2 (Lipid-Dense):** Concentrated fat sources, including plant oils, animal fats, and shortenings.
-4. **Cluster 3 (High Protein):** Dense protein sources, including meats, poultry, seafood, legumes, and protein isolates.
+| Cluster | Profile Description | Key Characteristics | Representative Examples |
+| :--- | :--- | :--- | :--- |
+| **Cluster 0** | **Low Nutrient Density** | Low caloric/macronutrient concentration, high water content | Raw vegetables, leafy greens, simple broth bases |
+| **Cluster 1** | **High Carbohydrate & Sodium** | Elevated sugars, starches, and sodium levels | Processed grains, baked goods, snacks, confectioneries |
+| **Cluster 2** | **Lipid-Dense** | Concentrated fats and high energy density | Plant oils, animal fats, shortenings, nut butters |
+| **Cluster 3** | **High Protein** | High amino acid density with variable fat profiles | Poultry, seafood, lean meats, plant protein isolates |
 
 ### Key Observations:
 * **Convergence Across Biological Origins:** High-protein items clustered together regardless of source origin. For instance, dried walrus meat and plant-based sausage alternatives mapped to the same high-protein cluster based strictly on macronutrient density.
-* **Marketing Overlap in Processed Foods:** "Diet" or "reduced-fat" packaged items (e.g., reduced-fat biscuits and snack novelties) clustered directly within the High-Carbohydrate/High-Sodium profile alongside traditional confectioneries, indicating that fat reduction often coincides with elevated carbohydrate and sodium levels.
+* **Nutritional Similarity Among Differently Marketed Products:** Some reduced-fat and diet-labeled products clustered alongside traditional high-carbohydrate processed foods, suggesting that single marketing attributes may not fully represent overall nutrient profiles.
 
 ---
 
 ## 4. Reproducibility & Code Execution
-To reproduce these findings locally:
+To reproduce these findings locally (Python 3.8+ recommended):
+
 1. Clone this repository: `git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git`
-2. Install required packages: `pip install pandas numpy scikit-learn matplotlib seaborn`
+2. Install required dependencies: `pip install pandas numpy scikit-learn matplotlib seaborn`
 3. Launch Jupyter Notebook and execute `USDA_Clustering_Analysis.ipynb` from top to bottom.
 
 ---
@@ -53,12 +56,12 @@ To reproduce these findings locally:
 ## 5. Limitations & Future Work
 
 ### Limitations
-* **Geometric Assumptions:** $K$-Means assumes isotropic (spherical) cluster geometry, which may not capture complex non-linear boundaries in nutritional data.
-* **Feature Scope:** The model excluded micronutrients (vitamins, minerals) and dietary fiber, which significantly impact glycemic response and overall nutritional quality.
+* **Geometric Assumptions:** K-Means assumes isotropic (spherical) cluster geometry, which may not capture complex non-linear boundaries in nutritional data.
+* **Feature Scope:** The model focused primarily on macronutrients and selected nutritional variables. Important factors such as dietary fiber, essential vitamins, and minerals were not included and may influence broader nutritional classification.
 
 ### Future Directions
 * Application of density-based models (e.g., DBSCAN) or hierarchical clustering to detect non-spherical sub-clusters.
-* Expansion of feature vectors to include dietary fiber and key micronutrients.
+* Expansion of feature vectors to include dietary fiber and key micronutrient profiles.
 
 ---
 
@@ -68,6 +71,7 @@ These results demonstrate that unsupervised clustering can effectively group foo
 ---
 
 ## 7. References
-* **U.S. Department of Agriculture, Agricultural Research Service.** FoodData Central, 2019. [fdc.nal.usda.gov](https://fdc.nal.usda.gov/).
-* **Pedregosa et al.** *Scikit-learn: Machine Learning in Python*. JMLR 12, pp. 2825-2830, 2011.
-* **MacQueen, J.** *Some methods for classification and analysis of multivariate observations.* Proceedings of the fifth Berkeley symposium on mathematical statistics and probability, 1967.
+* **U.S. Department of Agriculture, Agricultural Research Service.** FoodData Central, 2019. [https://fdc.nal.usda.gov/](https://fdc.nal.usda.gov/)
+* **Pedregosa et al.** *Scikit-learn: Machine Learning in Python*. Journal of Machine Learning Research (JMLR), 12, pp. 2825-2830, 2011.
+* **Jolliffe, I. T.** *Principal Component Analysis*. Springer Series in Statistics, Springer-Verlag, 2002.
+* **MacQueen, J.** *Some methods for classification and analysis of multivariate observations.* Proceedings of the 5th Berkeley Symposium on Mathematical Statistics and Probability, 1967.

@@ -4,12 +4,12 @@
 ---
 
 ## Abstract
-This project applies unsupervised machine learning to 7,058 USDA food items to identify nutrient-based groupings independent of commercial labeling. By analyzing foods based solely on quantitative nutrient composition, this study explores whether computational methods can reveal patterns that are not immediately apparent from traditional food categories or commercial marketing descriptions. Using standardized nutritional features, Principal Component Analysis (PCA), and K-Means clustering, the analysis explores how foods naturally organize according to their observed nutrient profiles.
+This project applies unsupervised machine learning to 7,058 USDA food items to identify nutrient-based groupings independent of commercial labeling. By analyzing foods based solely on quantitative nutrient composition, this study explores whether computational methods can reveal patterns that are not immediately apparent from traditional food categories or commercial marketing descriptions. Using standardized nutrient features, Principal Component Analysis (PCA), and K-Means clustering, the analysis identifies patterns in how foods organize according to their observed nutrient profiles.
 
 ---
 
 ## 1. Project Overview & Objective
-Nutritional marketing often emphasizes specific claims (e.g., "low fat" or "diet") that may obscure a product's overall nutritional profile. The objective of this study is to evaluate whether an unsupervised machine learning model can objectively categorize food products based strictly on their quantitative nutrient composition, independent of commercial marketing labels.
+Nutritional marketing often emphasizes specific claims (e.g., "low fat" or "diet") that may not fully represent a product's overall nutritional profile. The objective of this study is to evaluate whether an unsupervised machine learning model can objectively categorize food products based strictly on their quantitative nutrient composition, independent of commercial marketing labels.
 
 ---
 
@@ -25,7 +25,7 @@ Nutritional marketing often emphasizes specific claims (e.g., "low fat" or "diet
 ---
 
 ## 3. Dataset & Methodology
-This study analyzed **7,058 food items** from the USDA National Nutrient Database across seven core quantitative nutritional features (per 100g serving):
+This study analyzed **7,058 food items** from the USDA National Nutrient Database across seven core nutrient features (per 100g serving):
 * **Calories (kcal)**
 * **Protein (g)**
 * **Total Fat (g)**
@@ -50,7 +50,7 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 | Cluster | Profile Description | Key Characteristics | Representative Examples |
 | :--- | :--- | :--- | :--- |
 | **Cluster 0** | **Low Energy Density** | Low caloric and macronutrient concentration, high water content | Raw vegetables, leafy greens, simple broth bases |
-| **Cluster 1** | **High Carbohydrate & Sodium** | Elevated sugars, starches, and sodium levels | Processed grains, baked goods, snacks, confectioneries |
+| **Cluster 1** | **High Carbohydrate / Sodium Profile** | Elevated sugars, starches, and sodium levels | Processed grains, baked goods, snacks, confectioneries |
 | **Cluster 2** | **Lipid-Dense** | Concentrated fats and high energy density | Plant oils, animal fats, shortenings, nut butters |
 | **Cluster 3** | **High Protein** | High protein content with variable fat profiles | Poultry, seafood, lean meats, plant protein isolates |
 
@@ -63,8 +63,14 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 ## 5. Reproducibility & Code Execution
 To reproduce these findings locally (Python 3.8+ recommended):
 
-1. Clone this repository: `git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git`
-2. Install required dependencies: `pip install pandas numpy scikit-learn matplotlib seaborn`
+1. Clone this repository:
+   ```bash
+   git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+   ```
+2. Install required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 3. Launch Jupyter Notebook and execute `USDA_Clustering_Analysis.ipynb` from top to bottom.
 
 ---
@@ -87,7 +93,7 @@ These results demonstrate that unsupervised clustering can identify meaningful g
 ---
 
 ## 8. References
-* **U.S. Department of Agriculture, Agricultural Research Service.** FoodData Central, 2019. [https://fdc.nal.usda.gov/](https://fdc.nal.usda.gov/)
+* **U.S. Department of Agriculture, Agricultural Research Service.** FoodData Central, 2019. https://fdc.nal.usda.gov/
 * **Pedregosa et al.** *Scikit-learn: Machine Learning in Python*. Journal of Machine Learning Research (JMLR), 12, pp. 2825-2830, 2011.
 * **Jolliffe, I. T.** *Principal Component Analysis*. Springer Series in Statistics, Springer-Verlag, 2002.
 * **MacQueen, J.** *Some methods for classification and analysis of multivariate observations.* Proceedings of the 5th Berkeley Symposium on Mathematical Statistics and Probability, 1967.

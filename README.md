@@ -2,7 +2,7 @@
 **Evaluating Nutrient-Based Food Classification Independent of Commercial Marketing Labels**
 
 ---
-##TL;DR 
+## Executive Summary
 Analyzed 7,058 USDA food items across 7 nutrient vectors using Principal Component Analysis (PCA) and K-Means clustering ($K=4$, Silhouette Score = 0.4014). The model successfully grouped foods by true biological nutrient density—placing items like plant-based sausage and dried walrus meat in the same high-protein cluster—proving that unsupervised machine learning can objectively classify foods independent of commercial marketing labels.
 
 ---

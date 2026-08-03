@@ -43,7 +43,7 @@ This study analyzed **7,058 food items** from the USDA National Nutrient Databas
 
 ## 4. Results & Visualizations
 
-![Cluster Visualizations](cluster_visualizations.png)
+![Cluster Visualizations](cluster_visualizations.png?v=2)
 
 ### Cluster Profile Summary (Mean Values per 100g)
 
